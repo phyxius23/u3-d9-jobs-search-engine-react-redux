@@ -10,6 +10,9 @@ const initialState = {
     query: "",
     jobs: [],
   },
+  favourites: {
+    content: [],
+  },
 }
 
 // State di MainSearch
@@ -38,6 +41,24 @@ const mainReducer = (state = initialState, action) => {
           query: action.payload,
         }
       };
+
+    case "ADD_FAVOURITES":
+      return {
+        ...state,
+        favourites: {
+          ...state.favourites,
+          content: [...state.favourites.content, action.payload],
+        }
+      };
+
+      case "DELETE_FAVOURITES":
+        return {
+          ...state,
+          favourites: {
+            ...state.favourites,
+            content: [...state.favourites.content, action.payload],
+          }
+        };
   
     default:
       return state;
